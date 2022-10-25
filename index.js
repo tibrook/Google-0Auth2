@@ -1,7 +1,7 @@
 // index.js
 
 /*  EXPRESS */
-
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const session = require("express-session");
@@ -45,9 +45,8 @@ passport.deserializeUser(function (obj, cb) {
 });
 
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-const GOOGLE_CLIENT_ID =
-  "7913682999-igqbnhe55q41946k9chd13lort2ljqa0.apps.googleusercontent.com";
-const GOOGLE_CLIENT_SECRET = "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";
+const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
+const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 passport.use(
   new GoogleStrategy(
     {
